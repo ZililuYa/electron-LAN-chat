@@ -91,10 +91,10 @@ class Index extends React.Component {
   render() {
     return (
       <div>
-        <Header onRunSearch={this.onRunSearch.bind(this)} onSocketAccept={this.onSocketAccept.bind(this)}/>
-        <Contacts search={this.state.search} contacts={this.state.contacts} nowIp={this.state.nowIp}/>
-        <div className="container">
-          <Home nowIp={this.state.nowIp} state={this.state}/>
+        <Header onRunSearch={this.onRunSearch.bind(this)} onSocketAccept={this.onSocketAccept.bind(this)} />
+        <Contacts search={this.state.search} contacts={this.state.contacts} nowIp={this.state.nowIp} />
+        <div className="container" >
+          <Home nowIp={this.state.nowIp} state={this.state} />
         </div>
       </div>
     );
@@ -113,9 +113,9 @@ if (module.hot) {
     render(
       <div>
         <Header />
-        <Contacts uid={utils.ip}/>
+        <Contacts uid={utils.ip} />
         <AppContainer>
-          <NextRoot store={store} history={history}/>
+          <NextRoot store={store} history={history} />
         </AppContainer>
       </div>,
       document.getElementById('root')

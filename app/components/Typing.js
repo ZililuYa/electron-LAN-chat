@@ -5,6 +5,7 @@ export default class Typing extends Component {
   constructor(props) {
     super(props);
   }
+
   decodeUnicode() {
     let html = '';
     for (let i = 1; i <= 255; i ++) {
@@ -25,9 +26,9 @@ export default class Typing extends Component {
 
   render() {
     return (
-      <div className="typing">
-        <a className="expr">😃</a>
-        <textarea className="textarea" ref="text" placeholder="Say Something ?"></textarea>
+      <div className="typing" >
+        <a className="expr" >😃</a>
+        <textarea className="textarea" ref="text" placeholder="Say Something ?" ></textarea>
       </div>
     );
   }

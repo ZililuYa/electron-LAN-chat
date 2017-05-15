@@ -45,9 +45,9 @@ export default class Home extends Component {
 
   render() {
     return (
-      <div className="home">
-        <Chatlog nowIp={this.state.nowIp}/>
-        <Typing nowIp={this.props.nowIp} onSendMessage={this.onSendMessage.bind(this)}/>
+      <div className="home" >
+        <Chatlog nowIp={this.state.nowIp} />
+        <Typing nowIp={this.props.nowIp} onSendMessage={this.onSendMessage.bind(this)} />
       </div>
     );
   }

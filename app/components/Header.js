@@ -31,22 +31,22 @@ export default class Header extends Component {
     // console.log(increment, incrementIfOdd);
 
     return (
-      <div className="header" id="header">
+      <div className="header" id="header" >
 
-        <div className="inputIp" ref="input">
-          <div className="inputMain">
-            <input type="text" ref="val" className="in" placeholder="请输入ip后缀，0 - 255" maxLength="3"/>
-            <button className="btn" onClick={this.qdAddIp.bind(this)}>确 定</button>
+        <div className="inputIp" ref="input" >
+          <div className="inputMain" >
+            <input type="text" ref="val" className="in" placeholder="请输入ip后缀，0 - 255" maxLength="3" />
+            <button className="btn" onClick={this.qdAddIp.bind(this)} >确 定</button>
           </div>
         </div>
 
-        <div className="search">
-          <i className="fa fa-search hea"></i>
-          <input type="text" className="input" ref="search" placeholder="search" onChange={this.onTextChange.bind(this)}/>
+        <div className="search" >
+          <i className="fa fa-search hea" ></i>
+          <input type="text" className="input" ref="search" placeholder="search" onChange={this.onTextChange.bind(this)} />
         </div>
-        <div className="addIp">
-          <a className="pull" onClick={this.addIp.bind(this)}>
-            <i className="fa fa-plus"></i>
+        <div className="addIp" >
+          <a className="pull" onClick={this.addIp.bind(this)} >
+            <i className="fa fa-plus" ></i>
           </a>
         </div>
         <Tbutton />

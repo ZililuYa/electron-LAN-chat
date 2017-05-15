@@ -114,8 +114,6 @@ let io = require('socket.io')(server);
 server.listen(19964);
 io.on('connection', function (socket) {
   socket.on('news', function (data) {
-    console.log(data);
-    // ipcMain.send('news', data);
     mainWindow.webContents.send('news', data);
   });
 });
