@@ -22,7 +22,7 @@ const utils = {
   IpQz: il[0] + '.' + il[1] + '.' + il[2],
   LinkError: 'Link Exists or Link Failed',
   getSocketIp: (ip) => {
-    return 'http://' + ip + ':19964'
+    return 'http://' + ip + ':19964';
   }
 };
 

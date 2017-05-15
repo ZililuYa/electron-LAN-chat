@@ -1,27 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
-import Root from './containers/Root';
-import { configureStore, history } from './store/configureStore';
-import './app.global.css';
+import './app.global.scss';
 import './assets/scss/style.scss';
 import Header from './components/Header';
 import Contacts from './components/Contacts';
 import Home from './components/Home';
 import utils from './utils/utils';
-
-const store = configureStore();
-
-
-// render(
-//   ,
-//   document.getElementById('header')
-// );
-// render(
-//   ,
-//   document.getElementById('contacts')
-// );
-
 
 class Index extends React.Component {
   constructor(props) {
@@ -103,22 +87,16 @@ class Index extends React.Component {
 
 
 render(
-  <Index />
-  , document.getElementById('root')
+  <Index />,
+  document.getElementById('root')
 );
 
-if (module.hot) {
-  module.hot.accept('./containers/Root', () => {
-    const NextRoot = require('./containers/Root'); // eslint-disable-line global-require
-    render(
-      <div>
-        <Header />
-        <Contacts uid={utils.ip} />
-        <AppContainer>
-          <NextRoot store={store} history={history} />
-        </AppContainer>
-      </div>,
-      document.getElementById('root')
-    );
-  });
-}
+
+// if (module.hot) {
+//   module.hot.accept('./containers/Root', () => {
+//     render(
+//       <Index />,
+//       document.getElementById('root')
+//     );
+//   });
+// }

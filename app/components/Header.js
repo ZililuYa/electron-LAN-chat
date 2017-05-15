@@ -24,6 +24,10 @@ export default class Header extends Component {
     }
   }
 
+  onHide() {
+    this.refs.input.style.display = 'none';
+  }
+
   render() {
 
     // console.log(this.props);
@@ -35,8 +39,9 @@ export default class Header extends Component {
 
         <div className="inputIp" ref="input" >
           <div className="inputMain" >
-            <input type="text" ref="val" className="in" placeholder="请输入ip后缀，0 - 255" maxLength="3" />
-            <button className="btn" onClick={this.qdAddIp.bind(this)} >确 定</button>
+            <input type="text" ref="val" className="in" placeholder="请输入ip后缀 ( 0 - 255 )" maxLength="3" />
+            <button className="btn yes" onClick={this.qdAddIp.bind(this)} >确 定</button>
+            <button className="btn no" onClick={this.onHide.bind(this)} >取 消</button>
           </div>
         </div>
 

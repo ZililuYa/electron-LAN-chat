@@ -16,7 +16,7 @@ export default class Chatlog extends Component {
     arr.forEach((x, y) => {
       if (x.ip) {
         items.push(
-          <div className="you" >
+          <div className="you" key={y}>
             <div className="tx" >
               <img src={tx} className="img" alt="" />
             </div>
@@ -28,7 +28,7 @@ export default class Chatlog extends Component {
         )
       } else {
         items.push(
-          <div className="me" >
+          <div className="me"  key={y}>
             <div className="tx" >
               <img src={tx} className="img" alt="" />
             </div>

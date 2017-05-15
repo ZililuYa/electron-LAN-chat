@@ -9,7 +9,6 @@ import { ipcRenderer } from 'electron';
 export default class Home extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
     this.state = props;
     ipcRenderer.on('news', (event, arr) => {
       let array = JSON.parse(localStorage[arr.ip]);

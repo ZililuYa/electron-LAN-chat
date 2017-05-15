@@ -60,10 +60,10 @@ app.on('ready', async () => {
 
   mainWindow = new BrowserWindow({
     // show: false,
-    width: 700,
-    height: 500,
-    minWidth: 700,
-    minHeight: 500,
+    width: 900,
+    height: 650,
+    minWidth: 900,
+    minHeight: 650,
     frame: false
   });
 
@@ -108,12 +108,25 @@ app.on('ready', async () => {
 
 });
 
-let apps = require('express')();
-let server = require('http').Server(apps);
-let io = require('socket.io')(server);
-server.listen(19964);
-io.on('connection', function (socket) {
-  socket.on('news', function (data) {
+// import Express  from 'express';
+// let apps = Express();
+// let server = require('http').Server(apps);
+//
+// import Socket  from 'socket.io';
+//
+// console.log(Socket);
+// let io = Socket(server);
+// server.listen(19964);
+// io.on('connection', (socket) => {
+//   socket.on('news', (data) => {
+//     mainWindow.webContents.send('news', data);
+//   });
+// });
+
+let io = require('socket.io')();
+io.on('connection', (socket) => {
+  socket.on('news', (data) => {
     mainWindow.webContents.send('news', data);
   });
 });
+io.listen(19964);

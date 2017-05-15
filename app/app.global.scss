@@ -164,16 +164,23 @@ button {
 
 .inputMain .btn {
   float: left;
-  width: 100%;
+  width: 50%;
   height: 50px;
   text-align: center;
-  background-color: #5555da;
   color: #fff;
   font-size: 15px;
   font-family: "YaHei Consolas Hybrid";
 }
 
+.inputMain .btn.yes{
+  background-color: #5555da;
+}
+
 .inputMain .btn:hover {
+  background-color: #4e41da;
+}
+
+.inputMain .btn.no{
   background-color: #4e41da;
 }
 
@@ -251,7 +258,7 @@ button {
 }
 
 .Tbutton .btn:hover {
-  opacity: 1
+  opacity: 1;
 }
 
 .Tbutton .btn.i1 {
