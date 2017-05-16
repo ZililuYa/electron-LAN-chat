@@ -4,35 +4,28 @@ import utils from '../utils/utils';
 
 
 export default class Contacts extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      nowIp: props.nowIp,
-      contacts: props.contacts
-    };
-  }
-
   userClick(i) {
-    if ('user active' === this.refs.user.className)
+    if (i === this.props.nowIp)
       return false;
-    this.setState({
-      num: i
-    });
+    // this.setState({
+    //   nowIp: i
+    // });
+    this.props.onToggleChat(i);
   }
 
   render() {
     let items = [];
     // let sea = this.props.search;
-
-    this.state.contacts.forEach((x, y) => {
+    this.props.contacts.forEach((x, y) => {
+      // console.log(this.props.nowIp, x);
       // if (x.ip.indexOf(sea) !=  -1 ||x.name.indexOf(sea) != - 1)
       items.push(
-        <div key={x} className={this.state.nowIp == x ? "user active" : "user"} ref="user" onClick={ this.userClick.bind(this, x) } >
+        <div key={y} className={this.props.nowIp === x ? "user active" : "user"} onClick={ this.userClick.bind(this, x) } >
           <div className="img" >
             <img src={localStorage[x + 'tx']} className="img" alt="" />
           </div>
           <div className="name" >
-            {x.replace(utils.IpQz+'.', '')}
+            {x.replace(utils.IpQz + '.', '')}
           </div>
           <div className="hr" ></div>
         </div>

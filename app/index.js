@@ -6,6 +6,7 @@ import Header from './components/Header';
 import Contacts from './components/Contacts';
 import Home from './components/Home';
 import utils from './utils/utils';
+import client from './assets/js/client';
 
 class Index extends React.Component {
   constructor(props) {
@@ -20,11 +21,10 @@ class Index extends React.Component {
   }
 
   componentWillMount() {
-    this.state.socket[utils.ip] = window.socket.connect(utils.socketIp);
-    this.state.connected = this.state.socket[utils.ip].connected;
+    console.log(utils.ip);
+    this.state.socket[utils.ip] = utils.ip;
+    this.state.connected = utils.ip;
     this.state.nowIp = utils.ip;
-    // message log
-    //localStorage[utils.ip]
     let arr = [];
     arr.push({
       ip: 0,
@@ -34,6 +34,12 @@ class Index extends React.Component {
     localStorage[utils.ip] = JSON.stringify(arr);
     localStorage[utils.ip + 'tx'] = "assets/images/hp/" + (Math.random() * 48).toFixed(0) + ".png";
     this.state.contacts.push(utils.ip);
+    // console.log(myState);
+    // client.isTrueLink(utils.ip, this.state, (sta, myState) => {
+    //   console.log(myState);
+    //   if (sta) {
+    //   }
+    // });
   }
 
   onRunSearch(sea) {
@@ -45,30 +51,54 @@ class Index extends React.Component {
 
   onSocketAccept(hz) {
     let ip = utils.IpQz + '.' + hz;
-    console.log(ip, this.state.socket[ip]);
+
     if (this.state.socket[ip]) {
       alert(utils.LinkError);
       return false;
     } else {
 
-      this.state.socket[ip] = window.socket.connect(utils.getSocketIp(ip));
-      if (this.state.socket[utils.ip].connected === this.state.connected) {
+      this.state.socket[ip] = ip;
+      if (this.state.socket[ip]) {
         let arr = [];
         arr.push({
           ip: 0,
-          message: 'Hello, ' + utils.ip,
+          message: 'Hello, ' + ip,
           date: utils.getDate()
         });
         localStorage[ip] = JSON.stringify(arr);
         localStorage[ip + 'tx'] = "assets/images/hp/" + (Math.random() * 48).toFixed(0) + ".png";
-        this.state.contacts.push(utils.ip);
+        this.state.contacts.push(ip);
         this.setState({
           nowIp: ip
         });
       } else {
-        this.state.socket[ip] = undefined;
         alert(utils.LinkError);
       }
+    }
+  }
+
+  onToggleChat(ip) {
+    console.log(this, ip);
+    this.setState({
+      nowIp: ip
+    });
+  }
+
+  onNewAddChat(ip) {
+    this.state.socket[ip] = ip;
+    if (this.state.socket[ip]) {
+      let arr = [];
+      arr.push({
+        ip: ip,
+        message: 'Hello, ' + ip,
+        date: utils.getDate()
+      });
+      localStorage[ip] = JSON.stringify(arr);
+      localStorage[ip + 'tx'] = "assets/images/hp/" + (Math.random() * 48).toFixed(0) + ".png";
+      this.state.contacts.push(ip);
+      this.setState({
+        nowIp: ip
+      });
     }
   }
 
@@ -76,9 +106,9 @@ class Index extends React.Component {
     return (
       <div>
         <Header onRunSearch={this.onRunSearch.bind(this)} onSocketAccept={this.onSocketAccept.bind(this)} />
-        <Contacts search={this.state.search} contacts={this.state.contacts} nowIp={this.state.nowIp} />
+        <Contacts search={this.state.search} contacts={this.state.contacts} nowIp={this.state.nowIp} onToggleChat={this.onToggleChat.bind(this)} />
         <div className="container" >
-          <Home nowIp={this.state.nowIp} state={this.state} />
+          <Home nowIp={this.state.nowIp} state={this.state} onNewAddChat={this.onNewAddChat.bind(this)} />
         </div>
       </div>
     );

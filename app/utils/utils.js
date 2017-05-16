@@ -26,5 +26,4 @@ const utils = {
   }
 };
 
-// modo
 module.exports = utils;

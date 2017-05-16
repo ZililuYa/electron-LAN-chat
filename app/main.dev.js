@@ -123,10 +123,45 @@ app.on('ready', async () => {
 //   });
 // });
 
-let io = require('socket.io')();
-io.on('connection', (socket) => {
-  socket.on('news', (data) => {
-    mainWindow.webContents.send('news', data);
+// let io = require('socket.io')();
+// io.on('connection', (socket) => {
+//   socket.on('news', (data) => {
+//     mainWindow.webContents.send('news', data);
+//   });
+// });
+// io.listen(19964);
+
+
+var net = require('net');
+var timeout = 20000;// 超时
+var listenPort = 19964;// 监听端口
+
+var server = net.createServer(function (socket) {
+  // 接收到数据
+  socket.on('data', function (data) {
+    try {
+      let arr = JSON.parse(data.toString());
+      // console.log(arr);
+      mainWindow.webContents.send('news', arr);
+    } catch (e) {
+
+    }
   });
+  server.on('close', function (data) {
+    console.log('paole');
+  });
+
+  //数据错误事件
+  socket.on('error', function (exception) {
+    console.log('socket error:' + exception);
+    socket.end();
+  });
+
+}).listen(listenPort);
+
+//服务器错误事件
+server.on("error", function (exception) {
+  console.log("server error:" + exception);
 });
-io.listen(19964);
+
+

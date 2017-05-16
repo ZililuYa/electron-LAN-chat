@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from 'react';
+import utils from '../utils/utils';
 
 export default class Chatlog extends Component {
 
@@ -10,13 +11,15 @@ export default class Chatlog extends Component {
   render() {
     let nowIp = this.props.nowIp;
     let items = [];
+    console.log(nowIp);
     let arr = JSON.parse(localStorage[nowIp]);
     let tx = localStorage[nowIp + 'tx'];
+    let metx = localStorage[utils.ip + 'tx'];
 
     arr.forEach((x, y) => {
       if (x.ip) {
         items.push(
-          <div className="you" key={y}>
+          <div className="you" key={y} >
             <div className="tx" >
               <img src={tx} className="img" alt="" />
             </div>
@@ -28,9 +31,9 @@ export default class Chatlog extends Component {
         )
       } else {
         items.push(
-          <div className="me"  key={y}>
+          <div className="me" key={y} >
             <div className="tx" >
-              <img src={tx} className="img" alt="" />
+              <img src={metx} className="img" alt="" />
             </div>
             <div className="mess" >
               {x.message}
