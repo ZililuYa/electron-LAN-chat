@@ -12,7 +12,6 @@ export default class Home extends Component {
     super(props);
     this.state = props;
     ipcRenderer.on('news', (event, arr) => {
-      console.log(this.state);
       let ip = arr.ip;
       if (! this.state.state.socket[ip]) {
         this.props.onNewAddChat(ip);

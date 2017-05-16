@@ -20,10 +20,7 @@ const utils = {
     return new Date().getTime();
   },
   IpQz: il[0] + '.' + il[1] + '.' + il[2],
-  LinkError: 'Link Exists or Link Failed',
-  getSocketIp: (ip) => {
-    return 'http://' + ip + ':19964';
-  }
+  LinkError: '已经存在',
 };
 
 module.exports = utils;

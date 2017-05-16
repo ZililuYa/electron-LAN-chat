@@ -30,7 +30,6 @@ export default class Contacts extends Component {
           <div className="hr" ></div>
         </div>
       );
-
     });
     return (
       <div className="contacts" id="contacts" >

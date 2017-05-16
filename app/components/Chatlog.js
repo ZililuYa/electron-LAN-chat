@@ -11,7 +11,6 @@ export default class Chatlog extends Component {
   render() {
     let nowIp = this.props.nowIp;
     let items = [];
-    console.log(nowIp);
     let arr = JSON.parse(localStorage[nowIp]);
     let tx = localStorage[nowIp + 'tx'];
     let metx = localStorage[utils.ip + 'tx'];

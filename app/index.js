@@ -6,7 +6,12 @@ import Header from './components/Header';
 import Contacts from './components/Contacts';
 import Home from './components/Home';
 import utils from './utils/utils';
-import client from './assets/js/client';
+import jquery from 'jquery';
+import './assets/js/jquery.nicescroll.min';
+
+window.onload = () => {
+  jquery('#contacts').niceScroll();
+};
 
 class Index extends React.Component {
   constructor(props) {
@@ -21,7 +26,6 @@ class Index extends React.Component {
   }
 
   componentWillMount() {
-    console.log(utils.ip);
     this.state.socket[utils.ip] = utils.ip;
     this.state.connected = utils.ip;
     this.state.nowIp = utils.ip;

@@ -29,11 +29,6 @@ export default class Header extends Component {
   }
 
   render() {
-
-    // console.log(this.props);
-    // const {increment, incrementIfOdd, incrementAsync, decrement, counter} = this.props;
-    // console.log(increment, incrementIfOdd);
-
     return (
       <div className="header" id="header" >
 
