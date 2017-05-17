@@ -9,7 +9,7 @@ const clients = {
       client.end();
     });
     client.on('error', (e) => {
-      alert('发生失败，确保IP正确');
+      alert('发送失败，确保IP正确');
     });
   }
 };

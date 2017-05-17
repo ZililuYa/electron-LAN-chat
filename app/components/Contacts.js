@@ -22,7 +22,7 @@ export default class Contacts extends Component {
       items.push(
         <div key={y} className={this.props.nowIp === x ? "user active" : "user"} onClick={ this.userClick.bind(this, x) } >
           <div className="img" >
-            <img src={localStorage[x + 'tx']} className="img" alt="" />
+            <img className={"div" + localStorage[x + 'tx']} alt="" />
           </div>
           <div className="name" >
             {x.replace(utils.IpQz + '.', '')}

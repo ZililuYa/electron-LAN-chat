@@ -36,7 +36,7 @@ class Index extends React.Component {
       date: utils.getDate()
     });
     localStorage[utils.ip] = JSON.stringify(arr);
-    localStorage[utils.ip + 'tx'] = "assets/images/hp/" + (Math.random() * 48).toFixed(0) + ".png";
+    localStorage[utils.ip + 'tx'] = " hp-" + (Math.random() * 48).toFixed(0) ;
     this.state.contacts.push(utils.ip);
     // console.log(myState);
     // client.isTrueLink(utils.ip, this.state, (sta, myState) => {
@@ -70,7 +70,7 @@ class Index extends React.Component {
           date: utils.getDate()
         });
         localStorage[ip] = JSON.stringify(arr);
-        localStorage[ip + 'tx'] = "assets/images/hp/" + (Math.random() * 48).toFixed(0) + ".png";
+        localStorage[ip + 'tx'] = " hp-" + (Math.random() * 48).toFixed(0) ;
         this.state.contacts.push(ip);
         this.setState({
           nowIp: ip
@@ -98,7 +98,7 @@ class Index extends React.Component {
         date: utils.getDate()
       });
       localStorage[ip] = JSON.stringify(arr);
-      localStorage[ip + 'tx'] = "assets/images/hp/" + (Math.random() * 48).toFixed(0) + ".png";
+      localStorage[ip + 'tx'] = " hp-" + (Math.random() * 48).toFixed(0) ;
       this.state.contacts.push(ip);
       this.setState({
         nowIp: ip

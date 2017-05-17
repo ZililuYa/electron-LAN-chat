@@ -20,7 +20,7 @@ export default class Chatlog extends Component {
         items.push(
           <div className="you" key={y} >
             <div className="tx" >
-              <img src={tx} className="img" alt="" />
+              <div className={"div" + tx} alt="" />
             </div>
             <div className="mess" >
               {x.message}
@@ -32,7 +32,7 @@ export default class Chatlog extends Component {
         items.push(
           <div className="me" key={y} >
             <div className="tx" >
-              <img src={metx} className="img" alt="" />
+              <div className={"div" + metx} alt="" />
             </div>
             <div className="mess" >
               {x.message}
