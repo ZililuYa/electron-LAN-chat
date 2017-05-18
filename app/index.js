@@ -1,13 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
 import './app.global.scss';
-import './assets/scss/style.scss';
 import Header from './components/Header';
 import Contacts from './components/Contacts';
 import Home from './components/Home';
 import utils from './utils/utils';
 import jquery from 'jquery';
 import './assets/js/jquery.nicescroll.min';
+import { message } from 'antd';
 
 window.onload = () => {
   jquery('#contacts').niceScroll();
@@ -57,7 +57,15 @@ class Index extends React.Component {
     let ip = utils.IpQz + '.' + hz;
 
     if (this.state.socket[ip]) {
-      alert(utils.LinkError);
+      const err = React.createClass({
+        render() {
+          return (
+            <span>已经存在或者目标不存在 <b>😂</b></span>
+          )
+        }
+      });
+      const node = React.createElement(err);
+      message.error(node, 4);
       return false;
     } else {
 
@@ -76,7 +84,6 @@ class Index extends React.Component {
           nowIp: ip
         });
       } else {
-        alert(utils.LinkError);
       }
     }
   }

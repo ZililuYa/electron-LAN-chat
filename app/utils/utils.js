@@ -19,8 +19,7 @@ const utils = {
   getDate: () => {
     return new Date().getTime();
   },
-  IpQz: il[0] + '.' + il[1] + '.' + il[2],
-  LinkError: '已经存在',
+  IpQz: il[0] + '.' + il[1] + '.' + il[2]
 };
 
 module.exports = utils;

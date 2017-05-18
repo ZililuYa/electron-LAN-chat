@@ -1,3 +1,5 @@
+import React from 'react';
+import { message } from 'antd';
 let net = require('net');
 let port = 19964;
 const clients = {
@@ -9,7 +11,15 @@ const clients = {
       client.end();
     });
     client.on('error', (e) => {
-      alert('发送失败，确保IP正确');
+      const err = React.createClass({
+        render() {
+          return (
+            <span>{host} 发送失败 <b>😣</b></span>
+          )
+        }
+      });
+      const node = React.createElement(err);
+      message.error(node, 4);
     });
   }
 };
