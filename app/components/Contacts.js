@@ -1,28 +1,24 @@
-// @flow
 import React, { Component } from 'react';
 import utils from '../utils/utils';
-
 
 export default class Contacts extends Component {
   userClick(i) {
     if (i === this.props.nowIp)
       return false;
-    // this.setState({
-    //   nowIp: i
-    // });
     this.props.onToggleChat(i);
+  }
+
+  unread() {
+    this.setState({});
   }
 
   render() {
     let items = [];
-    // let sea = this.props.search;
     this.props.contacts.forEach((x, y) => {
-      // console.log(this.props.nowIp, x);
-      // if (x.ip.indexOf(sea) !=  -1 ||x.name.indexOf(sea) != - 1)
       items.push(
         <div key={y} className={this.props.nowIp === x ? "user active" : "user"} onClick={ this.userClick.bind(this, x) } >
-          <div className="img" >
-            <img className={"div" + localStorage[x + 'tx']} alt="" />
+          <div className={localStorage[x + 'unread'] === '200' ? "img shake-rotate shake-constant" : "img"} >
+            <div className={"div" + localStorage[x + 'tx']} alt="" ></div>
           </div>
           <div className="name" >
             {x.replace(utils.IpQz + '.', '')}

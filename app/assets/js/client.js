@@ -20,6 +20,7 @@ const clients = {
       });
       const node = React.createElement(err);
       message.error(node, 4);
+      client.end();
     });
   }
 };

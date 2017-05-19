@@ -1,4 +1,3 @@
-// @flow
 import React, { Component } from 'react';
 import Typing from './Typing';
 import Chatlog from './Chatlog';
@@ -14,7 +13,7 @@ export default class Home extends Component {
     ipcRenderer.on('news', (event, arr) => {
       let ip = arr.ip;
       if (! this.state.state.socket[ip]) {
-        this.props.onNewAddChat(ip);
+        this.props.onNewAddChat(arr);
       } else {
         let array = JSON.parse(localStorage[arr.ip]);
         array.push({
@@ -23,6 +22,11 @@ export default class Home extends Component {
           date: utils.getDate()
         });
         localStorage[arr.ip] = JSON.stringify(array);
+        if (ip !== this.props.nowIp) {
+          console.log(ip);
+          localStorage[ip + 'unread'] = 200;
+          this.props.onUnread();
+        }
         this.setState({
           val: arr.message
         });
@@ -39,14 +43,11 @@ export default class Home extends Component {
     };
     arr.push(mess);
     localStorage[this.props.nowIp] = JSON.stringify(arr);
-    // this.state.state.socket[this.state.nowIp].emit('news', {
-    //   ip: this.state.nowIp,
-    //   val: val
-    // });
-    mess.ip = this.props.nowIp;
     this.setState({
       val: val
     });
+    mess.ip = this.props.nowIp;
+    console.log(mess);
     client.send(this.props.nowIp, mess);
   }
 

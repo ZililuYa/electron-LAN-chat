@@ -38,12 +38,6 @@ class Index extends React.Component {
     localStorage[utils.ip] = JSON.stringify(arr);
     localStorage[utils.ip + 'tx'] = " hp-" + (Math.random() * 48).toFixed(0) ;
     this.state.contacts.push(utils.ip);
-    // console.log(myState);
-    // client.isTrueLink(utils.ip, this.state, (sta, myState) => {
-    //   console.log(myState);
-    //   if (sta) {
-    //   }
-    // });
   }
 
   onRunSearch(sea) {
@@ -89,19 +83,20 @@ class Index extends React.Component {
   }
 
   onToggleChat(ip) {
-    console.log(this, ip);
+    localStorage[ip + 'unread'] = 500;
     this.setState({
       nowIp: ip
     });
   }
 
-  onNewAddChat(ip) {
+  onNewAddChat(arrry) {
+    const ip=arrry.ip;
     this.state.socket[ip] = ip;
     if (this.state.socket[ip]) {
       let arr = [];
       arr.push({
         ip: ip,
-        message: 'Hello, ' + ip,
+        message: arrry.message,
         date: utils.getDate()
       });
       localStorage[ip] = JSON.stringify(arr);
@@ -111,15 +106,28 @@ class Index extends React.Component {
         nowIp: ip
       });
     }
+    const err = React.createClass({
+      render() {
+        return (
+          <span>{ip}来了 <b>😀</b></span>
+        )
+      }
+    });
+    const node = React.createElement(err);
+    message.error(node, 4);
+  }
+
+  onUnread() {
+    this.refs.contacts.unread();
   }
 
   render() {
     return (
       <div>
         <Header onRunSearch={this.onRunSearch.bind(this)} onSocketAccept={this.onSocketAccept.bind(this)} />
-        <Contacts search={this.state.search} contacts={this.state.contacts} nowIp={this.state.nowIp} onToggleChat={this.onToggleChat.bind(this)} />
+        <Contacts ref="contacts" search={this.state.search} contacts={this.state.contacts} nowIp={this.state.nowIp} onToggleChat={this.onToggleChat.bind(this)} />
         <div className="container" >
-          <Home nowIp={this.state.nowIp} state={this.state} onNewAddChat={this.onNewAddChat.bind(this)} />
+          <Home nowIp={this.state.nowIp} state={this.state} onNewAddChat={this.onNewAddChat.bind(this)} onUnread={this.onUnread.bind(this)}/>
         </div>
       </div>
     );
@@ -139,5 +147,10 @@ render(
 //       <Index />,
 //       document.getElementById('root')
 //     );
+//   });
+// }
+// if (module.hot) {
+//   module.hot.accept('./containers/App', () => {
+//     render(<Index />);
 //   });
 // }

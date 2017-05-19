@@ -53,6 +53,7 @@ body {
 
 .contacts .user .img {
   float: left;
+  animation-duration: 10s !important;
 }
 
 .contacts .user .img .div {
@@ -63,6 +64,7 @@ body {
   border: 0;
   background-size: 100% 100%;
   float: left;
+
 }
 
 .contacts .user .name {
@@ -533,3 +535,5 @@ button {
 	padding: 0;
   }
 }
+
+

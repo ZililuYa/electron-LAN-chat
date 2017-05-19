@@ -1,11 +1,9 @@
-// @flow
 import React, { Component } from 'react';
 import Tbutton from  './Tbutton';
 
 export default class Header extends Component {
 
   onTextChange() {
-    // this.props.callbackParent(newState);
     this.props.onRunSearch(this.refs.search.value);
   }
 
