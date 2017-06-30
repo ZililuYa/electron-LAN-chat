@@ -11,6 +11,7 @@ import { message } from 'antd';
 
 window.onload = () => {
   jquery('#contacts').niceScroll();
+  jquery('.exprMain').niceScroll();
 };
 
 class Index extends React.Component {
