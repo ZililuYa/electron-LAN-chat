@@ -32,7 +32,7 @@
   },
   "browserslist": "electron 1.6",
   "build": {
-    "productName": "electron-LAN-chat",
+    "productName": "LAN Chat",
     "appId": "org.develar.electron-LAN-chat",
     "files": [
       "dist/",
