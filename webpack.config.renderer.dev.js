@@ -50,7 +50,7 @@ export default merge.smart(baseConfig, {
   module: {
     rules: [
       {
-        test: /\.global\.css$/,
+        test: /\.css$/,
         use: [
           {
             loader: 'style-loader'
@@ -64,7 +64,7 @@ export default merge.smart(baseConfig, {
         ]
       },
       {
-        test: /^((?!\.global).)*\.css$/,
+        test: /\.css$/,
         use: [
           {
             loader: 'style-loader'
@@ -82,7 +82,7 @@ export default merge.smart(baseConfig, {
       },
       // Add SASS support  - compile all .global.scss files and pipe it to style.css
       {
-        test: /\.global\.scss$/,
+        test: /\.scss$/,
         use: [
           {
             loader: 'style-loader'
@@ -100,7 +100,7 @@ export default merge.smart(baseConfig, {
       },
       // Add SASS support  - compile all other .scss files and pipe it to style.css
       {
-        test: /^((?!\.global).)*\.scss$/,
+        test: /\.scss$/,
         use: [
           {
             loader: 'style-loader'

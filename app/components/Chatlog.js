@@ -17,33 +17,33 @@ export default class Chatlog extends Component {
     arr.forEach((x, y) => {
       if (x.ip) {
         items.push(
-          <div className="you" key={y} >
-            <div className="tx" >
-              <div className={"div" + tx} alt="" />
+          <div className="you" key={y}>
+            <div className="tx">
+              <div className={"div" + tx} alt=""/>
             </div>
-            <div className="mess" >
+            <div className="mess">
               {x.message}
             </div>
-            <div className="horn" ></div>
+            <div className="horn"></div>
           </div>
         )
       } else {
         items.push(
-          <div className="me" key={y} >
-            <div className="tx" >
-              <div className={"div" + metx} alt="" />
+          <div className="me" key={y}>
+            <div className="tx">
+              <div className={"div" + metx} alt=""/>
             </div>
-            <div className="mess" >
+            <div className="mess">
               {x.message}
             </div>
-            <div className="horn" ></div>
+            <div className="horn"></div>
           </div>
         );
       }
     });
 
     return (
-      <div className="chatlog" ref="chatlog" >
+      <div className="chatlog" ref="chatlog">
         {items}
       </div>
     );

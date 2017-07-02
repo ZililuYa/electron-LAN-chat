@@ -37,7 +37,7 @@ class Index extends React.Component {
       date: utils.getDate()
     });
     localStorage[utils.ip] = JSON.stringify(arr);
-    localStorage[utils.ip + 'tx'] = " hp-" + (Math.random() * 48).toFixed(0) ;
+    localStorage[utils.ip + 'tx'] = " hp-" + (Math.random() * 48).toFixed(0);
     this.state.contacts.push(utils.ip);
   }
 
@@ -73,7 +73,7 @@ class Index extends React.Component {
           date: utils.getDate()
         });
         localStorage[ip] = JSON.stringify(arr);
-        localStorage[ip + 'tx'] = " hp-" + (Math.random() * 48).toFixed(0) ;
+        localStorage[ip + 'tx'] = " hp-" + (Math.random() * 48).toFixed(0);
         this.state.contacts.push(ip);
         this.setState({
           nowIp: ip
@@ -91,7 +91,7 @@ class Index extends React.Component {
   }
 
   onNewAddChat(arrry) {
-    const ip=arrry.ip;
+    const ip = arrry.ip;
     this.state.socket[ip] = ip;
     if (this.state.socket[ip]) {
       let arr = [];
@@ -101,7 +101,7 @@ class Index extends React.Component {
         date: utils.getDate()
       });
       localStorage[ip] = JSON.stringify(arr);
-      localStorage[ip + 'tx'] = " hp-" + (Math.random() * 48).toFixed(0) ;
+      localStorage[ip + 'tx'] = " hp-" + (Math.random() * 48).toFixed(0);
       this.state.contacts.push(ip);
       this.setState({
         nowIp: ip
@@ -125,9 +125,9 @@ class Index extends React.Component {
   render() {
     return (
       <div>
-        <Header onRunSearch={this.onRunSearch.bind(this)} onSocketAccept={this.onSocketAccept.bind(this)} />
-        <Contacts ref="contacts" search={this.state.search} contacts={this.state.contacts} nowIp={this.state.nowIp} onToggleChat={this.onToggleChat.bind(this)} />
-        <div className="container" >
+        <Header onRunSearch={this.onRunSearch.bind(this)} onSocketAccept={this.onSocketAccept.bind(this)}/>
+        <Contacts ref="contacts" search={this.state.search} contacts={this.state.contacts} nowIp={this.state.nowIp} onToggleChat={this.onToggleChat.bind(this)}/>
+        <div className="container">
           <Home nowIp={this.state.nowIp} state={this.state} onNewAddChat={this.onNewAddChat.bind(this)} onUnread={this.onUnread.bind(this)}/>
         </div>
       </div>

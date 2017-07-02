@@ -16,19 +16,19 @@ export default class Contacts extends Component {
     let items = [];
     this.props.contacts.forEach((x, y) => {
       items.push(
-        <div key={y} className={this.props.nowIp === x ? "user active" : "user"} onClick={ this.userClick.bind(this, x) } >
-          <div className={localStorage[x + 'unread'] === '200' ? "img shake-rotate shake-constant" : "img"} >
-            <div className={"div" + localStorage[x + 'tx']} alt="" ></div>
+        <div key={y} className={this.props.nowIp === x ? "user active" : "user"} onClick={ this.userClick.bind(this, x) }>
+          <div className={localStorage[x + 'unread'] === '200' ? "img shake-rotate shake-constant" : "img"}>
+            <div className={"div" + localStorage[x + 'tx']} alt=""></div>
           </div>
-          <div className="name" >
+          <div className="name">
             {x.replace(utils.IpQz + '.', '')}
           </div>
-          <div className="hr" ></div>
+          <div className="hr"></div>
         </div>
       );
     });
     return (
-      <div className="contacts" id="contacts" >
+      <div className="contacts" id="contacts">
         { items }
       </div>
     );

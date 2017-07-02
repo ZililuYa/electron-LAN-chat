@@ -12,7 +12,7 @@ export default class Home extends Component {
     this.state = props;
     ipcRenderer.on('news', (event, arr) => {
       let ip = arr.ip;
-      if (! this.state.state.socket[ip]) {
+      if (!this.state.state.socket[ip]) {
         this.props.onNewAddChat(arr);
       } else {
         let array = JSON.parse(localStorage[arr.ip]);
@@ -38,6 +38,7 @@ export default class Home extends Component {
     let arr = JSON.parse(localStorage[this.props.nowIp]);
     let mess = {
       ip: 0,
+      targetIp: 0,
       message: val,
       date: utils.getDate()
     };
@@ -46,7 +47,8 @@ export default class Home extends Component {
     this.setState({
       val: val
     });
-    mess.ip = this.props.nowIp;
+    mess.ip = utils.ip;
+    mess.targetIp = this.props.nowIp;
     console.log(mess);
     client.send(this.props.nowIp, mess);
   }
