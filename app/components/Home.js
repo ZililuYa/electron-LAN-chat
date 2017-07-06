@@ -24,7 +24,7 @@ export default class Home extends Component {
         localStorage[arr.ip] = JSON.stringify(array);
         if (ip !== this.props.nowIp) {
           console.log(ip);
-          localStorage[ip + 'unread'] = 200;
+          localStorage[ip + 'unread'] = '200';
           this.props.onUnread();
         }
         this.setState({
